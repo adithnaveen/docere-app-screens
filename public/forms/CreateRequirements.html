@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Training Requirements</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .select2-container--default .select2-selection--multiple {
+            border: 1px solid #dee2e6;
+            min-height: 38px;
+        }
+        .required-field::after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-4 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+    <div class="d-flex justify-content-end mb-3">
+                    <a href="../index.html" class="btn btn-outline-primary">Home</a>
+                </div>
+                
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">Create Training Requirements</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="requirementsForm" class="needs-validation" novalidate>
+                            <!-- Technology Input Tabs -->
+                            <div class="mb-3">
+                                <ul class="nav nav-tabs" id="technologyTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="select-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#select-tech" type="button" role="tab" 
+                                                aria-controls="select-tech" aria-selected="true">
+                                            Select Technologies
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="upload-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#upload-tech" type="button" role="tab" 
+                                                aria-controls="upload-tech" aria-selected="false">
+                                            Upload Document
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content border border-top-0 rounded-bottom p-3" id="technologyTabsContent">
+                                    <!-- Technologies Selection Tab -->
+                                    <div class="tab-pane fade show active" id="select-tech" role="tabpanel" aria-labelledby="select-tab">
+                                        <label for="technologies" class="form-label required-field">Technologies</label>
+                                        <select class="form-control" id="technologies" multiple required>
+                                            <optgroup label="Programming Languages">
+                                                <option value="java">Java</option>
+                                                <option value="python">Python</option>
+                                                <option value="cpp">C++</option>
+                                                <option value="csharp">C#</option>
+                                                <option value="javascript">JavaScript</option>
+                                                <option value="php">PHP</option>
+                                            </optgroup>
+                                            <optgroup label="Web Technologies">
+                                                <option value="reactjs">ReactJS</option>
+                                                <option value="angular">Angular</option>
+                                                <option value="vuejs">Vue.js</option>
+                                                <option value="nodejs">Node.js</option>
+                                            </optgroup>
+                                            <optgroup label="Database">
+                                                <option value="mysql">MySQL</option>
+                                                <option value="mongodb">MongoDB</option>
+                                                <option value="postgresql">PostgreSQL</option>
+                                            </optgroup>
+                                            <optgroup label="Cloud & DevOps">
+                                                <option value="aws">AWS</option>
+                                                <option value="azure">Azure</option>
+                                                <option value="docker">Docker</option>
+                                                <option value="kubernetes">Kubernetes</option>
+                                            </optgroup>
+                                        </select>
+                                        <div class="form-text">Select multiple technologies by clicking or typing</div>
+                                    </div>
+                                    <!-- Document Upload Tab -->
+                                    <div class="tab-pane fade" id="upload-tech" role="tabpanel" aria-labelledby="upload-tab">
+                                        <label for="techDocument" class="form-label required-field">Upload Technologies Document</label>
+                                        <input type="file" class="form-control" id="techDocument" accept=".pdf,.doc,.docx,.xlsx,.xls">
+                                        <div class="form-text">Upload a document containing the list of required technologies. 
+                                            Accepted formats: PDF, DOC, DOCX, XLS, XLSX</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Client Selection -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="client" class="form-label required-field">Client</label>
+                                    <select class="form-control" id="client" required>
+                                        <option value="">Select Client</option>
+                                        <option value="infosys">Infosys</option>
+                                        <option value="wipro">Wipro</option>
+                                        <option value="philips">Philips</option>
+                                        <option value="tcs">Tata Consultancy Services</option>
+                                        <option value="accenture">Accenture</option>
+                                        <option value="ibm">IBM India</option>
+                                        <option value="tech-mahindra">Tech Mahindra</option>
+                                        <option value="hcl">HCL Technologies</option>
+                                    </select>
+                                </div>
+
+                                <!-- Client POC -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="clientPoc" class="form-label required-field">Client POC</label>
+                                    <select class="form-control" id="clientPoc" required>
+                                        <option value="">Select or type to search POC</option>
+                                        <option value="rajesh-kumar">Rajesh Kumar</option>
+                                        <option value="priya-sharma">Priya Sharma</option>
+                                        <option value="amit-patel">Amit Patel</option>
+                                        <option value="deepa-verma">Deepa Verma</option>
+                                        <option value="suresh-iyer">Suresh Iyer</option>
+                                        <option value="neha-gupta">Neha Gupta</option>
+                                        <option value="karthik-raj">Karthik Raj</option>
+                                        <option value="anita-desai">Anita Desai</option>
+                                        <option value="vikram-singh">Vikram Singh</option>
+                                        <option value="meera-krishnan">Meera Krishnan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Location -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="location" class="form-label required-field">Location</label>
+                                    <input type="text" class="form-control" id="location" list="indianCities" required>
+                                    <datalist id="indianCities">
+                                        <option value="Bengaluru">
+                                        <option value="Mumbai">
+                                        <option value="Delhi">
+                                        <option value="Hyderabad">
+                                        <option value="Chennai">
+                                        <option value="Pune">
+                                        <option value="Kolkata">
+                                        <option value="Noida">
+                                        <option value="Gurugram">
+                                        <option value="Ahmedabad">
+                                        <option value="Thiruvananthapuram">
+                                        <option value="Kochi">
+                                        <option value="Chandigarh">
+                                        <option value="Indore">
+                                        <option value="Coimbatore">
+                                    </datalist>
+                                </div>
+
+                                <!-- Duration -->
+                                <div class="col-md-3 mb-3">
+                                    <label for="duration" class="form-label required-field">Duration</label>
+                                    <input type="number" class="form-control" id="duration" required min="1">
+                                </div>
+
+                                <!-- Duration Unit -->
+                                <div class="col-md-3 mb-3">
+                                    <label for="durationUnit" class="form-label required-field">Unit</label>
+                                    <select class="form-control" id="durationUnit" required>
+                                        <option value="hours">Hours</option>
+                                        <option value="days">Days</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Start Date -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="startDate" class="form-label required-field">Start Date</label>
+                                    <input type="text" class="form-control datepicker" id="startDate" required>
+                                </div>
+
+                                <!-- End Date -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="endDate" class="form-label required-field">End Date</label>
+                                    <input type="text" class="form-control datepicker" id="endDate" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <!-- Trainer Experience -->
+                                <div class="col-md-4">
+                                    <label for="trainerExperience" class="form-label required-field">Minimum Trainer Experience (Years)</label>
+                                    <input type="number" class="form-control" id="trainerExperience" min="0" required>
+                                </div>
+
+                                <!-- Training Confirmation -->
+                                <div class="col-md-4">
+                                    <label class="form-label required-field mb-2">Is Training Confirmed?</label>
+                                    <div class="btn-group w-100" role="group">
+                                        <input type="radio" class="btn-check" name="isConfirmed" id="confirmedYes" value="yes" required>
+                                        <label class="btn btn-outline-secondary" for="confirmedYes">Yes</label>
+                                        <input type="radio" class="btn-check" name="isConfirmed" id="confirmedNo" value="no" required>
+                                        <label class="btn btn-outline-secondary" for="confirmedNo">Tentative</label>
+                                    </div>
+                                </div>
+
+                                <!-- Training Audience -->
+                                <div class="col-md-4">
+                                    <label class="form-label required-field mb-2">Training Program For</label>
+                                    <div class="btn-group w-100" role="group">
+                                        <input type="radio" class="btn-check" name="trainingAudience" id="forFreshers" value="freshers" required>
+                                        <label class="btn btn-outline-secondary" for="forFreshers">Freshers</label>
+                                        <input type="radio" class="btn-check" name="trainingAudience" id="forLaterals" value="laterals" required>
+                                        <label class="btn btn-outline-secondary" for="forLaterals">Laterals</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Options -->
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="shareVendors">
+                                    <label class="form-check-label" for="shareVendors">
+                                        Share to all vendors
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="makePublic">
+                                    <label class="form-check-label" for="makePublic">
+                                        Make it public
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Buttons -->
+                            <div class="d-flex justify-content-end gap-2">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary">Create Requirement</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2 for multiple selection
+            $('#technologies').select2({
+                placeholder: "Select technologies",
+                allowClear: true
+            });
+
+            // Initialize Select2 for client with search
+            $('#client').select2({
+                placeholder: "Select Client",
+                allowClear: true
+            });
+
+            // Initialize Select2 for client POC with search
+            $('#clientPoc').select2({
+                placeholder: "Select or type to search POC",
+                allowClear: true,
+                tags: true
+            });
+
+            // Initialize Flatpickr for date inputs
+            flatpickr(".datepicker", {
+                enableTime: false,
+                dateFormat: "Y-m-d",
+                minDate: "today"
+            });
+
+            // End date should be after start date
+            const startDatePicker = flatpickr("#startDate", {
+                onChange: function(selectedDates) {
+                    endDatePicker.set("minDate", selectedDates[0]);
+                }
+            });
+
+            const endDatePicker = flatpickr("#endDate", {
+                onChange: function(selectedDates) {
+                    startDatePicker.set("maxDate", selectedDates[0]);
+                }
+            });
+
+            // Form validation
+            const form = document.getElementById('requirementsForm');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
+        });
+    </script>
+</body>
+</html>
