@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Vendor - Docere App</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <style>
+        .select2-container .select2-selection--single {
+            height: 38px;
+            padding: 5px;
+        }
+        .required-field::after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+        }
+        .poc-card {
+            position: relative;
+        }
+        .remove-poc {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-4 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="../index.html" class="btn btn-outline-primary">Home</a>
+                </div>
+
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">Create New Vendor</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="vendorForm" class="needs-validation" novalidate>
+                            <!-- Company Details -->
+                            <div class="mb-4">
+                                <label for="companyName" class="form-label required-field">Vendor Company Name</label>
+                                <input type="text" class="form-control" id="companyName" required>
+                            </div>
+
+                            <!-- Location Selection -->
+                            <div class="mb-4">
+                                <label for="location" class="form-label required-field">Vendor Location</label>
+                                <select class="form-control" id="location" required>
+                                    <option value="">Select Location</option>
+                                    <optgroup label="United States">
+                                        <option value="us-newyork">United States - New York</option>
+                                        <option value="us-sanfrancisco">United States - San Francisco</option>
+                                        <option value="us-chicago">United States - Chicago</option>
+                                        <option value="us-boston">United States - Boston</option>
+                                        <option value="us-seattle">United States - Seattle</option>
+                                        <option value="us-austin">United States - Austin</option>
+                                        <option value="us-losangeles">United States - Los Angeles</option>
+                                        <option value="us-miami">United States - Miami</option>
+                                        <option value="us-denver">United States - Denver</option>
+                                        <option value="us-dallas">United States - Dallas</option>
+                                    </optgroup>
+                                    <optgroup label="India">
+                                        <option value="in-bangalore">India - Bangalore</option>
+                                        <option value="in-mumbai">India - Mumbai</option>
+                                        <option value="in-delhi">India - Delhi</option>
+                                        <option value="in-hyderabad">India - Hyderabad</option>
+                                        <option value="in-chennai">India - Chennai</option>
+                                        <option value="in-pune">India - Pune</option>
+                                        <option value="in-kolkata">India - Kolkata</option>
+                                        <option value="in-ahmedabad">India - Ahmedabad</option>
+                                        <option value="in-noida">India - Noida</option>
+                                        <option value="in-gurgaon">India - Gurgaon</option>
+                                    </optgroup>
+                                    <optgroup label="United Kingdom">
+                                        <option value="uk-london">United Kingdom - London</option>
+                                        <option value="uk-manchester">United Kingdom - Manchester</option>
+                                        <option value="uk-birmingham">United Kingdom - Birmingham</option>
+                                        <option value="uk-leeds">United Kingdom - Leeds</option>
+                                        <option value="uk-glasgow">United Kingdom - Glasgow</option>
+                                        <option value="uk-edinburgh">United Kingdom - Edinburgh</option>
+                                        <option value="uk-liverpool">United Kingdom - Liverpool</option>
+                                        <option value="uk-bristol">United Kingdom - Bristol</option>
+                                        <option value="uk-cardiff">United Kingdom - Cardiff</option>
+                                        <option value="uk-belfast">United Kingdom - Belfast</option>
+                                    </optgroup>
+                                    <optgroup label="Germany">
+                                        <option value="de-berlin">Germany - Berlin</option>
+                                        <option value="de-munich">Germany - Munich</option>
+                                        <option value="de-hamburg">Germany - Hamburg</option>
+                                        <option value="de-frankfurt">Germany - Frankfurt</option>
+                                        <option value="de-cologne">Germany - Cologne</option>
+                                        <option value="de-stuttgart">Germany - Stuttgart</option>
+                                        <option value="de-dusseldorf">Germany - Düsseldorf</option>
+                                        <option value="de-leipzig">Germany - Leipzig</option>
+                                        <option value="de-dresden">Germany - Dresden</option>
+                                        <option value="de-hannover">Germany - Hannover</option>
+                                    </optgroup>
+                                    <optgroup label="Australia">
+                                        <option value="au-sydney">Australia - Sydney</option>
+                                        <option value="au-melbourne">Australia - Melbourne</option>
+                                        <option value="au-brisbane">Australia - Brisbane</option>
+                                        <option value="au-perth">Australia - Perth</option>
+                                        <option value="au-adelaide">Australia - Adelaide</option>
+                                        <option value="au-canberra">Australia - Canberra</option>
+                                        <option value="au-goldcoast">Australia - Gold Coast</option>
+                                        <option value="au-newcastle">Australia - Newcastle</option>
+                                        <option value="au-wollongong">Australia - Wollongong</option>
+                                        <option value="au-hobart">Australia - Hobart</option>
+                                    </optgroup>
+                                    <optgroup label="Japan">
+                                        <option value="jp-tokyo">Japan - Tokyo</option>
+                                        <option value="jp-osaka">Japan - Osaka</option>
+                                        <option value="jp-yokohama">Japan - Yokohama</option>
+                                        <option value="jp-nagoya">Japan - Nagoya</option>
+                                        <option value="jp-sapporo">Japan - Sapporo</option>
+                                        <option value="jp-fukuoka">Japan - Fukuoka</option>
+                                        <option value="jp-kobe">Japan - Kobe</option>
+                                        <option value="jp-kyoto">Japan - Kyoto</option>
+                                        <option value="jp-kawasaki">Japan - Kawasaki</option>
+                                        <option value="jp-saitama">Japan - Saitama</option>
+                                    </optgroup>
+                                    <optgroup label="Canada">
+                                        <option value="ca-toronto">Canada - Toronto</option>
+                                        <option value="ca-vancouver">Canada - Vancouver</option>
+                                        <option value="ca-montreal">Canada - Montreal</option>
+                                        <option value="ca-calgary">Canada - Calgary</option>
+                                        <option value="ca-ottawa">Canada - Ottawa</option>
+                                        <option value="ca-edmonton">Canada - Edmonton</option>
+                                        <option value="ca-quebec">Canada - Quebec City</option>
+                                        <option value="ca-winnipeg">Canada - Winnipeg</option>
+                                        <option value="ca-hamilton">Canada - Hamilton</option>
+                                        <option value="ca-halifax">Canada - Halifax</option>
+                                    </optgroup>
+                                    <optgroup label="Singapore">
+                                        <option value="sg-central">Singapore - Central Region</option>
+                                        <option value="sg-east">Singapore - East Region</option>
+                                        <option value="sg-north">Singapore - North Region</option>
+                                        <option value="sg-northeast">Singapore - North-East Region</option>
+                                        <option value="sg-west">Singapore - West Region</option>
+                                    </optgroup>
+                                    <optgroup label="Netherlands">
+                                        <option value="nl-amsterdam">Netherlands - Amsterdam</option>
+                                        <option value="nl-rotterdam">Netherlands - Rotterdam</option>
+                                        <option value="nl-hague">Netherlands - The Hague</option>
+                                        <option value="nl-utrecht">Netherlands - Utrecht</option>
+                                        <option value="nl-eindhoven">Netherlands - Eindhoven</option>
+                                        <option value="nl-groningen">Netherlands - Groningen</option>
+                                        <option value="nl-tilburg">Netherlands - Tilburg</option>
+                                        <option value="nl-almere">Netherlands - Almere</option>
+                                        <option value="nl-breda">Netherlands - Breda</option>
+                                        <option value="nl-nijmegen">Netherlands - Nijmegen</option>
+                                    </optgroup>
+                                    <optgroup label="Sweden">
+                                        <option value="se-stockholm">Sweden - Stockholm</option>
+                                        <option value="se-gothenburg">Sweden - Gothenburg</option>
+                                        <option value="se-malmo">Sweden - Malmö</option>
+                                        <option value="se-uppsala">Sweden - Uppsala</option>
+                                        <option value="se-linkoping">Sweden - Linköping</option>
+                                        <option value="se-orebro">Sweden - Örebro</option>
+                                        <option value="se-vasteras">Sweden - Västerås</option>
+                                        <option value="se-norrkoping">Sweden - Norrköping</option>
+                                        <option value="se-helsingborg">Sweden - Helsingborg</option>
+                                        <option value="se-jonkoping">Sweden - Jönköping</option>
+                                    </optgroup>
+                                    <optgroup label="France">
+                                        <option value="fr-paris">France - Paris</option>
+                                        <option value="fr-marseille">France - Marseille</option>
+                                        <option value="fr-lyon">France - Lyon</option>
+                                        <option value="fr-toulouse">France - Toulouse</option>
+                                        <option value="fr-nice">France - Nice</option>
+                                        <option value="fr-nantes">France - Nantes</option>
+                                        <option value="fr-strasbourg">France - Strasbourg</option>
+                                        <option value="fr-montpellier">France - Montpellier</option>
+                                        <option value="fr-bordeaux">France - Bordeaux</option>
+                                        <option value="fr-lille">France - Lille</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <!-- POC Information -->
+                            <div class="mb-4">
+                                <label class="form-label required-field">Vendor POC Details</label>
+                                <div id="pocContainer">
+                                    <!-- Initial POC Card -->
+                                    <div class="card mb-3 poc-card">
+                                        <div class="card-body">
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-poc" style="display:none">
+                                                <i class="bi bi-trash"></i> Remove
+                                            </button>
+                                            <div class="row g-3">
+                                                <div class="col-md-4">
+                                                    <label class="form-label">POC Name</label>
+                                                    <input type="text" class="form-control" name="pocName[]" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Email</label>
+                                                    <input type="email" class="form-control" name="pocEmail[]" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Contact Number</label>
+                                                    <input type="tel" class="form-control" name="pocContact[]" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-secondary" id="addPoc">
+                                    <i class="bi bi-plus-circle"></i> Add Another POC
+                                </button>
+                            </div>
+
+                            <!-- Submit Buttons -->
+                            <div class="d-flex justify-content-end gap-2">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary">Create Vendor</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2 for location
+            $('#location').select2({
+                placeholder: "Select Location",
+                allowClear: true
+            });
+
+            // Add POC functionality
+            $('#addPoc').click(function() {
+                const pocContainer = $('#pocContainer');
+                const pocCards = pocContainer.find('.poc-card');
+                
+                // Show remove buttons on existing cards
+                pocCards.find('.remove-poc').show();
+
+                // Clone the first POC card
+                const newCard = pocCards.first().clone();
+                newCard.find('input').val(''); // Clear input values
+                newCard.find('.remove-poc').show(); // Show remove button
+                pocContainer.append(newCard);
+            });
+
+            // Remove POC functionality
+            $(document).on('click', '.remove-poc', function() {
+                const pocCards = $('.poc-card');
+                if (pocCards.length > 1) {
+                    $(this).closest('.poc-card').remove();
+                    
+                    // Hide remove button if only one card remains
+                    if (pocCards.length === 2) {
+                        pocCards.first().find('.remove-poc').hide();
+                    }
+                }
+            });
+
+            // Form validation
+            const form = document.getElementById('vendorForm');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
+        });
+    </script>
+</body>
+</html>

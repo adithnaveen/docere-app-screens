@@ -40,7 +40,7 @@
                                         <button class="nav-link active" id="select-tab" data-bs-toggle="tab" 
                                                 data-bs-target="#select-tech" type="button" role="tab" 
                                                 aria-controls="select-tech" aria-selected="true">
-                                            Select Technologies
+                                            Select Tools / Technologies
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
@@ -50,39 +50,86 @@
                                             Upload Document
                                         </button>
                                     </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="react-url-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#react-url" type="button" role="tab" 
+                                                aria-controls="react-url" aria-selected="false">
+                                            React From URL
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="previous-req-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#previous-req" type="button" role="tab" 
+                                                aria-controls="previous-req" aria-selected="false">
+                                            From Previous Requirement
+                                        </button>
+                                    </li>
                                 </ul>
                                 <div class="tab-content border border-top-0 rounded-bottom p-3" id="technologyTabsContent">
                                     <!-- Technologies Selection Tab -->
                                     <div class="tab-pane fade show active" id="select-tech" role="tabpanel" aria-labelledby="select-tab">
-                                        <label for="technologies" class="form-label required-field">Technologies</label>
-                                        <select class="form-control" id="technologies" multiple required>
-                                            <optgroup label="Programming Languages">
-                                                <option value="java">Java</option>
-                                                <option value="python">Python</option>
-                                                <option value="cpp">C++</option>
-                                                <option value="csharp">C#</option>
-                                                <option value="javascript">JavaScript</option>
-                                                <option value="php">PHP</option>
-                                            </optgroup>
-                                            <optgroup label="Web Technologies">
-                                                <option value="reactjs">ReactJS</option>
-                                                <option value="angular">Angular</option>
-                                                <option value="vuejs">Vue.js</option>
-                                                <option value="nodejs">Node.js</option>
-                                            </optgroup>
-                                            <optgroup label="Database">
-                                                <option value="mysql">MySQL</option>
-                                                <option value="mongodb">MongoDB</option>
-                                                <option value="postgresql">PostgreSQL</option>
-                                            </optgroup>
-                                            <optgroup label="Cloud & DevOps">
-                                                <option value="aws">AWS</option>
-                                                <option value="azure">Azure</option>
-                                                <option value="docker">Docker</option>
-                                                <option value="kubernetes">Kubernetes</option>
-                                            </optgroup>
-                                        </select>
-                                        <div class="form-text">Select multiple technologies by clicking or typing</div>
+                                        <!-- Required Technologies -->
+                                        <div class="mb-4">
+                                            <label for="technologies" class="form-label required-field">Required Technologies</label>
+                                            <select class="form-control" id="technologies" multiple required>
+                                                <optgroup label="Programming Languages">
+                                                    <option value="java">Java</option>
+                                                    <option value="python">Python</option>
+                                                    <option value="cpp">C++</option>
+                                                    <option value="csharp">C#</option>
+                                                    <option value="javascript">JavaScript</option>
+                                                    <option value="php">PHP</option>
+                                                </optgroup>
+                                                <optgroup label="Web Technologies">
+                                                    <option value="reactjs">ReactJS</option>
+                                                    <option value="angular">Angular</option>
+                                                    <option value="vuejs">Vue.js</option>
+                                                    <option value="nodejs">Node.js</option>
+                                                </optgroup>
+                                                <optgroup label="Database">
+                                                    <option value="mysql">MySQL</option>
+                                                    <option value="mongodb">MongoDB</option>
+                                                    <option value="postgresql">PostgreSQL</option>
+                                                </optgroup>
+                                                <optgroup label="Cloud & DevOps">
+                                                    <option value="aws">AWS</option>
+                                                    <option value="azure">Azure</option>
+                                                    <option value="docker">Docker</option>
+                                                    <option value="kubernetes">Kubernetes</option>
+                                                </optgroup>
+                                            </select>
+                                            <div class="form-text">Select multiple technologies that are required</div>
+                                        </div>
+
+                                        <!-- Technologies to Avoid -->
+                                        <div>
+                                            <label for="technologiesToAvoid" class="form-label">Should Not Know</label>
+                                            <select class="form-control" id="technologiesToAvoid" multiple>
+                                                <optgroup label="Legacy Technologies">
+                                                    <option value="cobol">COBOL</option>
+                                                    <option value="fortran">FORTRAN</option>
+                                                    <option value="pascal">Pascal</option>
+                                                    <option value="vb6">Visual Basic 6</option>
+                                                </optgroup>
+                                                <optgroup label="Specific Tools">
+                                                    <option value="lotus-notes">Lotus Notes</option>
+                                                    <option value="flash">Adobe Flash</option>
+                                                    <option value="silverlight">Silverlight</option>
+                                                </optgroup>
+                                                <optgroup label="Skills to Avoid">
+                                                    <option value="micromanagement">Micromanagement</option>
+                                                    <option value="resistant-to-change">Resistance to Change</option>
+                                                    <option value="non-collaborative">Non-collaborative Approach</option>
+                                                    <option value="poor-communication">Poor Communication</option>
+                                                </optgroup>
+                                                <optgroup label="Other">
+                                                    <option value="fixed-mindset">Fixed Mindset</option>
+                                                    <option value="non-agile">Non-Agile Methodologies</option>
+                                                    <option value="waterfall-only">Waterfall-only Experience</option>
+                                                </optgroup>
+                                            </select>
+                                            <div class="form-text">Select technologies or skills that should not be present</div>
+                                        </div>
                                     </div>
                                     <!-- Document Upload Tab -->
                                     <div class="tab-pane fade" id="upload-tech" role="tabpanel" aria-labelledby="upload-tab">
@@ -90,6 +137,30 @@
                                         <input type="file" class="form-control" id="techDocument" accept=".pdf,.doc,.docx,.xlsx,.xls">
                                         <div class="form-text">Upload a document containing the list of required technologies. 
                                             Accepted formats: PDF, DOC, DOCX, XLS, XLSX</div>
+                                    </div>
+                                    <!-- React From URL Tab -->
+                                    <div class="tab-pane fade" id="react-url" role="tabpanel" aria-labelledby="react-url-tab">
+                                        <label for="reactUrl" class="form-label">URL</label>
+                                        <input type="url" class="form-control" id="reactUrl" placeholder="Enter URL">
+                                        <div class="form-text">Enter the URL of the React application or repository</div>
+                                    </div>
+                                    <!-- Previous Requirements Tab -->
+                                    <div class="tab-pane fade" id="previous-req" role="tabpanel" aria-labelledby="previous-req-tab">
+                                        <label for="previousRequirement" class="form-label">Select Previous Requirement</label>
+                                        <select class="form-control" id="previousRequirement">
+                                            <option value="">Type to search requirements...</option>
+                                            <option value="req101">Req101-JavaFullStack</option>
+                                            <option value="req102">Req102-MERNStack For Freshers</option>
+                                            <option value="req103">Req103-ITIL</option>
+                                            <option value="req104">Req104-Softskills XYZ company</option>
+                                            <option value="req105">Req105-DevOps with AWS</option>
+                                            <option value="req106">Req106-Python Data Science</option>
+                                            <option value="req107">Req107-React Advanced TCS</option>
+                                            <option value="req108">Req108-Azure Cloud Architecture</option>
+                                            <option value="req109">Req109-Agile Scrum Master</option>
+                                            <option value="req110">Req110-Full Stack Development Infosys</option>
+                                        </select>
+                                        <div class="form-text">Search and select from previous training requirements</div>
                                     </div>
                                 </div>
                             </div>
@@ -249,9 +320,15 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         $(document).ready(function() {
-            // Initialize Select2 for multiple selection
+            // Initialize Select2 for required technologies
             $('#technologies').select2({
-                placeholder: "Select technologies",
+                placeholder: "Select required technologies",
+                allowClear: true
+            });
+
+            // Initialize Select2 for technologies to avoid
+            $('#technologiesToAvoid').select2({
+                placeholder: "Select technologies/skills to avoid",
                 allowClear: true
             });
 
@@ -266,6 +343,14 @@
                 placeholder: "Select or type to search POC",
                 allowClear: true,
                 tags: true
+            });
+
+            // Initialize Select2 for previous requirements
+            $('#previousRequirement').select2({
+                placeholder: "Type to search requirements...",
+                allowClear: true,
+                width: '100%',
+                minimumInputLength: 2
             });
 
             // Initialize Flatpickr for date inputs
