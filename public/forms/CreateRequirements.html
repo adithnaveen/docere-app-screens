@@ -44,6 +44,13 @@
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="fuzzy-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#fuzzy-input" type="button" role="tab" 
+                                                aria-controls="fuzzy-input" aria-selected="false">
+                                            Fuzzy Input
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="upload-tab" data-bs-toggle="tab" 
                                                 data-bs-target="#upload-tech" type="button" role="tab" 
                                                 aria-controls="upload-tech" aria-selected="false">
@@ -54,7 +61,7 @@
                                         <button class="nav-link" id="react-url-tab" data-bs-toggle="tab" 
                                                 data-bs-target="#react-url" type="button" role="tab" 
                                                 aria-controls="react-url" aria-selected="false">
-                                            React From URL
+                                            Read  From URL
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
@@ -66,6 +73,17 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content border border-top-0 rounded-bottom p-3" id="technologyTabsContent">
+                                    <!-- Fuzzy Input Tab -->
+                                    <div class="tab-pane fade" id="fuzzy-input" role="tabpanel" aria-labelledby="fuzzy-tab">
+                                        <div class="mb-4">
+                                            <label for="fuzzyText" class="form-label">Enter Technologies Description</label>
+                                            <textarea class="form-control" id="fuzzyText" rows="5"  cols="80"
+                                                    placeholder="Enter the technologies and skills description in free text format..."></textarea>
+                                            <div class="form-text">Enter a free-form description of the required technologies and skills. The system will analyze and extract the relevant technologies.</div>
+                                
+                                        </div>
+                                    </div>
+
                                     <!-- Technologies Selection Tab -->
                                     <div class="tab-pane fade show active" id="select-tech" role="tabpanel" aria-labelledby="select-tab">
                                         <!-- Required Technologies -->
@@ -129,6 +147,7 @@
                                                 </optgroup>
                                             </select>
                                             <div class="form-text">Select technologies or skills that should not be present</div>
+
                                         </div>
                                     </div>
                                     <!-- Document Upload Tab -->
@@ -167,38 +186,74 @@
 
                             <div class="row">
                                 <!-- Client Selection -->
-                                <div class="col-md-6 mb-3">
-                                    <label for="client" class="form-label required-field">Client</label>
-                                    <select class="form-control" id="client" required>
-                                        <option value="">Select Client</option>
-                                        <option value="infosys">Infosys</option>
-                                        <option value="wipro">Wipro</option>
-                                        <option value="philips">Philips</option>
-                                        <option value="tcs">Tata Consultancy Services</option>
-                                        <option value="accenture">Accenture</option>
-                                        <option value="ibm">IBM India</option>
-                                        <option value="tech-mahindra">Tech Mahindra</option>
-                                        <option value="hcl">HCL Technologies</option>
-                                    </select>
-                                </div>
 
-                                <!-- Client POC -->
-                                <div class="col-md-6 mb-3">
-                                    <label for="clientPoc" class="form-label required-field">Client POC</label>
-                                    <select class="form-control" id="clientPoc" required>
-                                        <option value="">Select or type to search POC</option>
-                                        <option value="rajesh-kumar">Rajesh Kumar</option>
-                                        <option value="priya-sharma">Priya Sharma</option>
-                                        <option value="amit-patel">Amit Patel</option>
-                                        <option value="deepa-verma">Deepa Verma</option>
-                                        <option value="suresh-iyer">Suresh Iyer</option>
-                                        <option value="neha-gupta">Neha Gupta</option>
-                                        <option value="karthik-raj">Karthik Raj</option>
-                                        <option value="anita-desai">Anita Desai</option>
-                                        <option value="vikram-singh">Vikram Singh</option>
-                                        <option value="meera-krishnan">Meera Krishnan</option>
-                                    </select>
-                                </div>
+                                
+
+                                            <div class="mt-3 row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="minBudget" class="form-label">Minimum Budget</label>
+                                                    <input type="number" class="form-control" id="minBudget" min="0.01" step="0.01" placeholder="Enter minimum budget" inputmode="decimal" oninput="if(this.value && this.value<=0) this.value='';" aria-describedby="minBudgetHelp">
+                                                    <div id="minBudgetHelp" class="form-text">Enter a positive value (greater than 0).</div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="maxBudget" class="form-label">Maximum Budget</label>
+                                                    <input type="number" class="form-control" id="maxBudget" min="0.01" step="0.01" placeholder="Enter maximum budget" inputmode="decimal" oninput="if(this.value && this.value<=0) this.value='';" aria-describedby="maxBudgetHelp">
+                                                    <div id="maxBudgetHelp" class="form-text">Enter a positive value (greater than 0).</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 mb-3 form-check">
+                                                <input class="form-check-input" type="checkbox" id="ourCompany" onchange="toggleClientSection()">
+                                                <label class="form-check-label" for="ourCompany">Our Company</label>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3 client-field">
+                                                <label for="client" class="form-label required-field">Client</label>
+                                                <select class="form-control" id="client" required>
+                                                    <option value="">Select Client</option>
+                                                    <option value="infosys">Infosys</option>
+                                                    <option value="wipro">Wipro</option>
+                                                    <option value="philips">Philips</option>
+                                                    <option value="tcs">Tata Consultancy Services</option>
+                                                    <option value="accenture">Accenture</option>
+                                                    <option value="ibm">IBM India</option>
+                                                    <option value="tech-mahindra">Tech Mahindra</option>
+                                                    <option value="hcl">HCL Technologies</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Client POC -->
+                                            <div class="col-md-6 mb-3 client-field">
+                                                <label for="clientPoc" class="form-label required-field">Client POC</label>
+                                                <select class="form-control" id="clientPoc" required>
+                                                    <option value="">Select or type to search POC</option>
+                                                    <option value="rajesh-kumar">Rajesh Kumar</option>
+                                                    <option value="priya-sharma">Priya Sharma</option>
+                                                    <option value="amit-patel">Amit Patel</option>
+                                                    <option value="deepa-verma">Deepa Verma</option>
+                                                    <option value="suresh-iyer">Suresh Iyer</option>
+                                                    <option value="neha-gupta">Neha Gupta</option>
+                                                    <option value="karthik-raj">Karthik Raj</option>
+                                                    <option value="anita-desai">Anita Desai</option>
+                                                    <option value="vikram-singh">Vikram Singh</option>
+                                                    <option value="meera-krishnan">Meera Krishnan</option>
+                                                </select>
+                                            </div>
+
+                                            <script>
+                                            function toggleClientSection() {
+                                                const checked = document.getElementById('ourCompany').checked;
+                                                document.querySelectorAll('.client-field').forEach(el => {
+                                                    el.style.display = checked ? 'none' : '';
+                                                    const sel = el.querySelector('select');
+                                                    if (sel) {
+                                                        sel.required = !checked;
+                                                        sel.classList.remove('is-invalid','is-valid');
+                                                    }
+                                                });
+                                            }
+                                            document.addEventListener('DOMContentLoaded', toggleClientSection);
+                                            </script>
                             </div>
 
                             <div class="row">
@@ -237,6 +292,8 @@
                                     <select class="form-control" id="durationUnit" required>
                                         <option value="hours">Hours</option>
                                         <option value="days">Days</option>
+                                        <option value="days">Week</option>
+                                        <option value="days">Months</option>
                                     </select>
                                 </div>
                             </div>
@@ -294,17 +351,27 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="makePublic">
-                                    <label class="form-check-label" for="makePublic">
+                                    <input class="form-check-input" type="checkbox" id="makePublic"
+                                                 onchange="document.getElementById('publicUrl').style.display = this.checked ? 'inline' : 'none'; document.getElementById('makePublicLabel').textContent = this.checked ? 'LIVE' : 'Make it public';">
+                                    <label class="form-check-label" for="makePublic" id="makePublicLabel">
                                         Make it public
                                     </label>
+                                    <span id="publicUrl" style="display:none; margin-left:8px;">
+                                        <a href="http://savoira.in/requirements/probits/training-title" target="_blank" rel="noopener noreferrer">
+                                            http://savoira.in/requirements/probits/training-title
+                                        </a>
+                                    </span>
+                                </div>
+                                   
                                 </div>
                             </div>
 
                             <!-- Submit Buttons -->
                             <div class="d-flex justify-content-end gap-2">
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary">Ai Matching</button>                                
                                 <button type="submit" class="btn btn-primary">Create Requirement</button>
+                                <button type="submit" class="btn btn-primary">Create Requirement & Show Trainers</button>
+                                
                             </div>
                         </form>
                     </div>
@@ -382,6 +449,80 @@
                 }
                 form.classList.add('was-validated');
             });
+
+            // AI Matching Function
+            window.handleAIMatching = function() {
+                // Get required technologies
+                const requiredTechnologies = $('#technologies').select2('data').map(item => ({
+                    value: item.id,
+                    text: item.text,
+                    group: $(item.element).closest('optgroup').attr('label')
+                }));
+
+                // Get technologies to avoid
+                const technologiesToAvoid = $('#technologiesToAvoid').select2('data').map(item => ({
+                    value: item.id,
+                    text: item.text,
+                    group: $(item.element).closest('optgroup').attr('label')
+                }));
+
+                // Get fuzzy input if available
+                const fuzzyInput = $('#fuzzyText').val();
+
+                // Create the complete matching data
+                const matchingData = {
+                    requiredTechnologies,
+                    technologiesToAvoid,
+                    fuzzyInput,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Log the data (you can replace this with your API call)
+                console.log('AI Matching Data:', matchingData);
+
+                // Display the extracted data in a modal
+                const modalHtml = `
+                    <div class="modal fade" id="aiMatchingModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">AI Matching Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h6>Required Technologies:</h6>
+                                    <ul>
+                                        ${requiredTechnologies.map(tech => 
+                                            `<li>${tech.text} (${tech.group})</li>`).join('')}
+                                    </ul>
+                                    <h6>Technologies to Avoid:</h6>
+                                    <ul>
+                                        ${technologiesToAvoid.map(tech => 
+                                            `<li>${tech.text} (${tech.group})</li>`).join('')}
+                                    </ul>
+                                    ${fuzzyInput ? `
+                                        <h6>Fuzzy Input:</h6>
+                                        <p>${fuzzyInput}</p>
+                                    ` : ''}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Remove existing modal if any
+                $('#aiMatchingModal').remove();
+
+                // Add the new modal to the body
+                $('body').append(modalHtml);
+
+                // Show the modal
+                const modal = new bootstrap.Modal(document.getElementById('aiMatchingModal'));
+                modal.show();
+            };
         });
     </script>
 </body>
